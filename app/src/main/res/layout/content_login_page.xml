@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.synchro.synchro_model01.LoginPage"
+    tools:showIn="@layout/app_bar_login_page">
+
+    <TextView
+        android:id="@+id/login_userName_view"
+        android:text="@string/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"/>
+
+    <EditText
+        android:id="@+id/login_user_editText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/login_userName_view"
+        android:layout_toRightOf="@id/login_userName_view"
+        android:layout_centerVertical="true"
+        android:inputType="text"/>
+
+    <TextView
+        android:id="@+id/login_password_view"
+        android:text="@string/password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/login_user_editText"/>
+
+    <EditText
+        android:id="@+id/login_password_editText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/login_password_view"
+        android:layout_toRightOf="@id/login_password_view"
+        android:layout_below="@id/login_userName_view"
+        android:inputType="textPassword"/>
+
+    <ImageView
+        android:src="@drawable/logo"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_above="@id/login_user_editText"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="Logo Here" />
+
+    <Button
+        android:text="@string/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/login_password_editText"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>
