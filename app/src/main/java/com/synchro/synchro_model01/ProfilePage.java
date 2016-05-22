@@ -2,6 +2,9 @@ package com.synchro.synchro_model01;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -11,13 +14,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class SearchPage extends AppCompatActivity
+public class ProfilePage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_page);
+        setContentView(R.layout.activity_profile_page);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -44,7 +47,7 @@ public class SearchPage extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.search_page, menu);
+        getMenuInflater().inflate(R.menu.profile_page, menu);
         return true;
     }
 
@@ -56,9 +59,8 @@ public class SearchPage extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_goToLogin) {
-            Intent intent = new Intent(this, LoginPage.class);
-            startActivity(intent);
+        if (id == R.id.action_goToEditProfile) {
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
@@ -87,5 +89,12 @@ public class SearchPage extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    //opens up view for editing profile fields
+    //to be accessed via menu button on top-right
+    //need a button for saving info???
+    public void editProfile() {
+
     }
 }

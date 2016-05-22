@@ -27,6 +27,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.synchro.synchro_model01.SearchPage" />
         </activity>
+        <activity
+            android:name=".ProfilePage"
+            android:label="@string/title_activity_profile_page"
+            android:parentActivityName=".SearchPage"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.synchro.synchro_model01.SearchPage" />
+        </activity>
     </application>
 
 </manifest>
