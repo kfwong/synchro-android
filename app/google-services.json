@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "665784476698",
+    "firebase_url": "https://synchro-88a4b.firebaseio.com",
+    "project_id": "synchro-88a4b",
+    "storage_bucket": "synchro-88a4b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:665784476698:android:cfa1edc0306bd84f",
+        "android_client_info": {
+          "package_name": "com.synchro.synchro_model01"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "665784476698-956cq68b4a8tndtjjvfeu62vld91375a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJdItIhwGeB6fYNjW38UMHWH_ShuCIwvo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

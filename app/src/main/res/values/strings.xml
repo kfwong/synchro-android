@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">synchro_model01</string>
+    <string name="app_name">synchro_prototype01</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -16,10 +16,8 @@
 
     <string name="title_activity_login_page">Login</string>
     <string name="login_page_temp">Login Page (Temp)</string>
-    <string name="username">Username: </string>
-    <string name="password">Password: </string>
-    <string name="login">Login</string>
 
     <string name="title_activity_profile_page">Profile</string>
     <string name="edit_profile">Edit Profile</string>
+
 </resources>

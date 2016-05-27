@@ -1,4 +1,4 @@
-package com.synchro.synchro_model01;
+package com.synchro.synchro_prototype01;
 
 import android.content.Intent;
 import android.os.Bundle;
