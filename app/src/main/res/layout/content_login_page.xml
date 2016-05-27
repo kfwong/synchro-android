@@ -12,20 +12,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.synchro.synchro_prototype01.LoginPage"
     tools:showIn="@layout/app_bar_login_page">
-<!--
-    <ImageView
-        android:src="@drawable/logo"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_centerHorizontal="true" />
 
-    <Button
-        android:id="@+id/button_login"
-        android:text="@string/login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"/>
--->
     <WebView
         android:id="@+id/webview"
         android:layout_width="wrap_content"

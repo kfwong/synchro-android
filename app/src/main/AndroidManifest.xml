@@ -34,6 +34,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.synchro.synchro_prototype01.SearchPage" />
         </activity>
+
     </application>
 
 </manifest>

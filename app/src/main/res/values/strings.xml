@@ -16,8 +16,17 @@
 
     <string name="title_activity_login_page">Login</string>
     <string name="login_page_temp">Login Page (Temp)</string>
+<<<<<<< HEAD
 
     <string name="title_activity_profile_page">Profile</string>
     <string name="edit_profile">Edit Profile</string>
 
+=======
+    <string name="username">Username: </string>
+    <string name="password">Password: </string>
+    <string name="login">Login</string>
+
+    <string name="title_activity_profile_page">Profile</string>
+    <string name="edit_profile">Edit Profile</string>
+>>>>>>> 1b5097ecbfb462ccbc4c57e1c221064fcb9df376
 </resources>
