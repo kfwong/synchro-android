@@ -2,6 +2,7 @@ package com.synchro.synchro_prototype01;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.session.MediaSession;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -14,9 +15,11 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
+import com.koushikdutta.ion.Response;
 
 /*  NOTE: since LoginPage is designed to appear only when user first uses app and needs authentication
     there shouldn't be any direct link to it, but for easy access, temporary link made on SearchPage(which is
@@ -49,17 +52,22 @@ public class LoginPage extends AppCompatActivity {
                 .load(urls.getValidateUrl())
                 .asJsonObject()
                 .setCallback(new FutureCallback<JsonObject>() {
+
                     /*  checks returned output for success parameter true or false and redirects accordingly
                     * */
                     @Override
                     public void onCompleted(Exception e, JsonObject result) {
                         if (result.get("Success").toString().equals("true")) {
-                            //checks if returned token is a newly generated one for replacement
-                            //=_= apparently the returned token is within "" so compare properly!
+                            /*  checks if returned token is a newly generated one for replacement
+                                =_= apparently the returned token is within "" so compare properly!
+                            */
                             StoreData data = new StoreData(LoginPage.this);
                             if (!result.get("Token").toString().equals("\"" + data.getAuthToken() + "\"")) {
-                                data.setAuthToken(result.get("Token").toString());
+                                //takes out the "" marks
+                                data.setAuthToken(result.get("Token").toString().replaceAll("\"", ""));
                             }
+
+                            //resyncUserDetails();
                             Intent intent = new Intent(LoginPage.this, SearchPage.class);
                             startActivity(intent);
                         }
@@ -70,30 +78,50 @@ public class LoginPage extends AppCompatActivity {
                 });
     }
 
+    //resync user details
+    private void resyncUserDetails() {
+        StoreData data = new StoreData(LoginPage.this);
+        StoreUrl urls = new StoreUrl(LoginPage.this);
+        //System.out.println("TOKEN "+data.getAuthToken());
+        Ion.with(LoginPage.this)
+                .load("GET", "https://ec2-52-77-240-7.ap-southeast-1.compute.amazonaws.com/api/v1/me/resync")
+                .setHeader("Authorization", data.getAuthToken())
+                .asString()
+                .setCallback(new FutureCallback<String>() {
+                    @Override
+                    public void onCompleted(Exception e, String result) {
+                        System.out.println("ERROR: "+e.toString());
+                    }
+                });
+    }
+
     //method for login
+    //redirects user after authentication
     private void loginUser() {
         WebView webview = (WebView) findViewById(R.id.webview);
 
         webview.getSettings().setJavaScriptEnabled(true);
         webview.addJavascriptInterface(new MyJavaScriptInterface(this), "HtmlViewer");
 
-        webview.loadUrl("https://ivle.nus.edu.sg/api/login/?apikey=PK3n2PGjXR4OooZPZyelQ");
+        final StoreUrl urls = new StoreUrl(LoginPage.this);
+        webview.loadUrl(urls.getLoginUrl());
 
         webview.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {
 
                 //this sets webview to invisible ONLY if not the login page to IVLE
-                if (!url.equals("https://ivle.nus.edu.sg/api/login/?apikey=PK3n2PGjXR4OooZPZyelQ")) {
+                if (!url.equals(urls.getLoginUrl())) {
                     view.setVisibility(View.GONE);
 
                     /* user validated
                         extract token from html
                         redirects to landing page (searchpage for now)
                     */
-                    if (url.equals("https://ivle.nus.edu.sg/api/login/login_result.ashx?apikey=PK3n2PGjXR4OooZPZyelQ&r=0")) {
+                    if (url.equals(urls.getLoginSuccessUrl())) {
                         view.loadUrl("javascript:window.HtmlViewer.showHTML" +
                                 "('&lt;html&gt;'+document.getElementsByTagName('html')[0].innerHTML+'&lt;/html&gt;');");
+                        //resyncUserDetails();
                         Intent intent = new Intent(LoginPage.this, SearchPage.class);
                         startActivity(intent);
                     }
@@ -115,8 +143,7 @@ public class LoginPage extends AppCompatActivity {
         });
     }
 
-
-    //for extracting html source code and saving token into extractToken
+    //for extracting html source code and saving token to SharedPrefs
     class MyJavaScriptInterface
     {
         private Context ctx;

@@ -20,7 +20,6 @@ public class StoreData {
         prefs = context.getSharedPreferences("pref_01", Context.MODE_PRIVATE);
         editor = prefs.edit();
         setApiKey("PK3n2PGjXR4OooZPZyelQ");
-
     }
 
     public String getApiKey() {return prefs.getString("apiKey", "error");}
