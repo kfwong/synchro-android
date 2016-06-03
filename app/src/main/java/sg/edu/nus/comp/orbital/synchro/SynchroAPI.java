@@ -4,10 +4,13 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.util.Log;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.koushikdutta.ion.Ion;
 import com.koushikdutta.ion.builder.Builders;
 import com.koushikdutta.ion.builder.LoadBuilder;
+
+
 
 import java.security.KeyStore;
 import java.security.cert.Certificate;
@@ -40,6 +43,7 @@ public class SynchroAPI {
     private static final String API_BASE_URL = "https://ec2-52-77-240-7.ap-southeast-1.compute.amazonaws.com/api/v1/";
     private static final String apiMeResync = API_BASE_URL + "me/resync";
     private static final String apiMe = API_BASE_URL + "me";
+    private static final String apiMeGroupsJoined = API_BASE_URL + "me/groups";
 
     private SynchroAPI(String ivleAuthToken) {
         // default private singleton
@@ -92,10 +96,10 @@ public class SynchroAPI {
         ion.getHttpClient().getSSLSocketMiddleware().setTrustManagers(trustManagerFactory.getTrustManagers());
     }
 
-    public JsonObject getMe(Context context) {
+    public JsonObject getMe() {
         JsonObject result = null;
         try {
-            result = Ion.with(context)
+            result = Ion.with(App.getContext())
                     .load(apiMe)
                     .addHeader("Authorization", ivleAuthToken)
                     .asJsonObject()
@@ -104,6 +108,20 @@ public class SynchroAPI {
             ex.printStackTrace();
         }
 
+        return result;
+    }
+
+    public JsonArray getMeGroupsJoined(){
+        JsonArray result = null;
+        try{
+            result = Ion.with(App.getContext())
+                    .load(apiMeGroupsJoined)
+                    .addHeader("Authorization", ivleAuthToken)
+                    .asJsonArray()
+                    .get();
+        }catch ( Exception ex){
+            ex.printStackTrace();
+        }
         return result;
     }
 }

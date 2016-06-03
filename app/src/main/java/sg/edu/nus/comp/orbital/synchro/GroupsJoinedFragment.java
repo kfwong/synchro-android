@@ -1,10 +1,16 @@
 package sg.edu.nus.comp.orbital.synchro;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
+
 public class GroupsJoinedFragment extends Fragment {
     public GroupsJoinedFragment() {
         // Required empty public constructor
@@ -25,5 +31,18 @@ public class GroupsJoinedFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_groups_joined, container, false);
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        SynchroAPI api = SynchroAPI.getInstance();
+        String result = api.getMeGroupsJoined().toString();
+
+        Log.d("Synchro", result);
+
+        TextView sampleTv = (TextView) this.getActivity().findViewById(R.id.tv_groups_joined);
+        sampleTv.setText(result);
     }
 }

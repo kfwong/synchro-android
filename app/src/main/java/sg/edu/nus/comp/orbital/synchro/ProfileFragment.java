@@ -34,6 +34,7 @@ public class ProfileFragment extends Fragment {
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
+     *
      * @return A new instance of fragment ProfileFragment.
      */
     // TODO: Rename and change types and number of parameters
@@ -46,16 +47,9 @@ public class ProfileFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        try {
-            // prepare self signed ssl crt
-            SynchroAPI api = SynchroAPI.getInstance();
+        SynchroAPI api = SynchroAPI.getInstance();
 
-            Log.d("Synchro", api.getMe(getContext()).toString());
-
-        } catch (Exception ex) {
-            Log.d("Synchro", "Something horrible went wrong.");
-            ex.printStackTrace();
-        }
+        Log.d("Synchro", api.getMe().toString());
     }
 
     @Override
