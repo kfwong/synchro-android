@@ -1,29 +1,11 @@
 <resources>
-    <string name="app_name">synchro_prototype01</string>
+    <string name="app_name">Synchro</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
 
-    <string name="profile">Profile</string>
-    <string name="groups_joined">Groups Joined</string>
-    <string name="recommendations">Recommendations</string>
-    <string name="create_new_page">Create New Page</string>
-    <string name="search">Search</string>
-
-    <string name="enter_search">Enter search query here</string>
-
-    <string name="title_activity_login_page">Login</string>
-    <string name="login_page_temp">Login Page (Temp)</string>
-
-    <string name="title_activity_profile_page">Profile</string>
-    <string name="edit_profile">Edit Profile</string>
-
-    <string name="title_activity_scrolling">ScrollingActivity</string>
-
-    <string name="faculty">Faculty:</string>
-    <string name="major">Major:</string>
-    <string name="modules_taken">Modules Taken:</string>
-
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

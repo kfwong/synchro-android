@@ -1,39 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.synchro.synchro_prototype01">
+    package="sg.edu.nus.comp.orbital.synchro">
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".SearchPage"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".LoginPage"
-            android:label="@string/app_name"
-            android:noHistory="true"
-            android:theme="@style/AppTheme.NoActionBar">
-            <uses-permission android:name="android.permission.INTERNET" />
-
+            android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ProfilePage"
-            android:label="@string/title_activity_profile_page"
-            android:parentActivityName=".SearchPage"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.synchro.synchro_prototype01.SearchPage" />
-        </activity>
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".LoginActivity" />
     </application>
 
 </manifest>
